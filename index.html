@@ -123,6 +123,7 @@
   </style>
 </head>
 
+
 <body>
   <div class="container">
     <header>
@@ -239,9 +240,22 @@
             <p class="card-text">
               The System tool to monitor the system usage and network security.
             </p>
-            <a href="http://192.168.1.110:5001/" class="btn btn-primary mt-auto" target="_blank">
+            <a href="http://192.168.1.243:5001/" class="btn btn-primary mt-auto" target="_blank">
               Launch
             </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Commercial Quote Help Card -->
+      <div class="col-sm-6 col-md-4 col-lg-3 tool-card">
+        <div class="card h-100">
+          <div class="card-body d-flex flex-column">
+            <span class="badge bg-success align-self-start mb-2">Insurance</span>
+            <h5 class="card-title"><i class="bi bi-wrench"></i>Proposal Generator</h5>
+            <p class="card-text">
+              Work In Progress.
+            </p>
           </div>
         </div>
       </div>
@@ -260,13 +274,19 @@
     crossorigin="anonymous"
   ></script>
   <script>
-    document.getElementById('search-input').addEventListener('input', function() {
-      const filter = this.value.toLowerCase();
+    function applyFilters() {
+      const search = document.getElementById('search-input').value.toLowerCase();
+      const categories = Array.from(document.querySelectorAll('.category-filter:checked')).map(cb => cb.value);
       document.querySelectorAll('.tool-card').forEach(col => {
         const title = col.querySelector('.card-title').textContent.toLowerCase();
-        col.style.display = title.includes(filter) ? '' : 'none';
+        const category = col.querySelector('.badge').textContent;
+        const matchesText = title.includes(search);
+        const matchesCategory = categories.includes(category);
+        col.style.display = (matchesText && matchesCategory) ? '' : 'none';
       });
-    });
+    }
+    document.getElementById('search-input').addEventListener('input', applyFilters);
+    document.querySelectorAll('.category-filter').forEach(cb => cb.addEventListener('change', applyFilters));
   </script>
 </body>
 </html>
