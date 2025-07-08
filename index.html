@@ -18,109 +18,128 @@
   />
 
   <style>
-    :root {
-      --bg-darker: #111111;
-      --bg-dark:   #1e1e1e;
-      --text-light: #f5f5f5;
-      --text-muted: #888888;
-      --accent-gold: #dfa560;
-    }
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      background: var(--bg-darker);
-      color: var(--text-light);
-      overflow-x: hidden;
-    }
-    /* Animated gradient background */
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-    body {
-      background: linear-gradient(135deg, #111111, #1e1e1e, #111111, #1e1e1e);
-      background-size: 400% 400%;
-      animation: gradientBG 30s ease infinite;
-      display: flex;
-      flex-direction: column;
-    }
-    .container {
-      max-width: 1200px;
-      padding: 2rem 1rem 1rem;
-      flex-grow: 1;
-    }
-    header {
-      text-align: center;
-      padding: 2rem 1rem;
-      border-bottom: 4px solid var(--accent-gold);
-      background: linear-gradient(-45deg, var(--bg-dark), var(--bg-darker), var(--bg-dark), var(--accent-gold));
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.7);
-      border-radius: 0.5rem;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.75rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      background: linear-gradient(90deg, var(--accent-gold), #fff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    header p {
-      margin: .5rem 0 0;
-      color: var(--text-muted);
-      font-style: italic;
-    }
-    .search-bar {
-      margin: 1.5rem 0;
-    }
-    .row g-4 {
-      margin-bottom: 0;
-    }
-    .card {
-      background: var(--bg-dark);
-      border: 1px solid #2a2a2a;
-      border-top: 3px solid var(--accent-gold);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.6);
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-    }
-    .card:hover {
-      transform: translateY(-6px) rotate(1deg);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.8);
-      border-color: var(--accent-gold);
-    }
-    .card-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--accent-gold);
-    }
-    .card-text {
-      color: var(--text-muted);
-      flex-grow: 1;
-    }
-    .btn-primary {
-      background-color: var(--accent-gold);
-      border-color: var(--accent-gold);
-      color: var(--bg-darker);
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      transition: background-color 0.2s;
-    }
-    .btn-primary:hover {
-      background-color: #c49b4a;
-      border-color: #c49b4a;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem 0;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-  </style>
+  :root {
+    /* Primary dark-blue / secondary white */
+    --bg-darker: #001F3F;    /* very dark navy page background */
+    --bg-dark:   #002A5C;    /* slightly lighter navy for cards */
+    --text-light: #FFFFFF;   /* white for main text */
+    --text-muted: #CCCCCC;   /* light grey for secondary text */
+    --accent: #FFFFFF;       /* white accent (borders, headings, buttons) */
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg-darker);
+    color: var(--text-light);
+    overflow-x: hidden;
+  }
+
+  /* Animated gradient background */
+  @keyframes gradientBG {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  body {
+    background: linear-gradient(135deg,
+                var(--bg-darker),
+                var(--bg-dark),
+                var(--bg-darker),
+                var(--bg-dark));
+    background-size: 400% 400%;
+    animation: gradientBG 30s ease infinite;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container {
+    max-width: 1200px;
+    padding: 2rem 1rem 1rem;
+    flex-grow: 1;
+  }
+
+  header {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-bottom: 4px solid var(--accent);
+    background: linear-gradient(-45deg,
+                var(--bg-dark),
+                var(--bg-darker),
+                var(--bg-dark),
+                var(--accent));
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+    border-radius: 0.5rem;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 2.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, var(--accent), #FFFFFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  header p {
+    margin: .5rem 0 0;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .search-bar {
+    margin: 1.5rem 0;
+  }
+
+  .row g-4 {
+    margin-bottom: 0;
+  }
+
+  .card {
+    background: var(--bg-dark);
+    border: 1px solid #003564;
+    border-top: 3px solid var(--accent);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-6px) rotate(1deg);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.8);
+    border-color: var(--accent);
+  }
+  .card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .card-text {
+    color: var(--text-muted);
+    flex-grow: 1;
+  }
+
+  .btn-primary {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg-darker);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s;
+  }
+  .btn-primary:hover {
+    background-color: #f0f0f0;
+    border-color: #f0f0f0;
+  }
+
+  footer {
+    text-align: center;
+    padding: 1rem 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+</style>
+
 </head>
 
 
@@ -275,18 +294,27 @@
   ></script>
   <script>
     function applyFilters() {
-      const search = document.getElementById('search-input').value.toLowerCase();
-      const categories = Array.from(document.querySelectorAll('.category-filter:checked')).map(cb => cb.value);
-      document.querySelectorAll('.tool-card').forEach(col => {
-        const title = col.querySelector('.card-title').textContent.toLowerCase();
-        const category = col.querySelector('.badge').textContent;
-        const matchesText = title.includes(search);
-        const matchesCategory = categories.includes(category);
-        col.style.display = (matchesText && matchesCategory) ? '' : 'none';
-      });
-    }
-    document.getElementById('search-input').addEventListener('input', applyFilters);
-    document.querySelectorAll('.category-filter').forEach(cb => cb.addEventListener('change', applyFilters));
+  const search = document.getElementById('search-input').value.toLowerCase();
+
+  // grab any checked category-filters (if you ever add them)
+  const checked = Array.from(document.querySelectorAll('.category-filter:checked'))
+                       .map(cb => cb.value);
+
+  document.querySelectorAll('.tool-card').forEach(col => {
+    const title    = col.querySelector('.card-title').textContent.toLowerCase();
+    const category = col.querySelector('.badge').textContent;
+
+    const matchesText     = title.includes(search);
+    // allow all if no categories checked
+    const matchesCategory = checked.length === 0 || checked.includes(category);
+
+    col.style.display = (matchesText && matchesCategory) ? '' : 'none';
+  });
+}
+
+// bind search only (you don’t have any .category-filter inputs)
+document.getElementById('search-input')
+        .addEventListener('input', applyFilters);
   </script>
 </body>
 </html>
